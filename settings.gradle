@@ -1,0 +1,11 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'school-management'
+include 'discovery-server', 'api-gateway', 'common-web', 'common-security',
+    'auth-user-service', 'teacher-hr-service', 'timetable-substitution-service',
+    'inventory-asset-service'
