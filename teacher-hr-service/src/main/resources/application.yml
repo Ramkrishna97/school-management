@@ -1,0 +1,45 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: teacher-hr-service
+  datasource:
+    url: jdbc:h2:mem:teacherdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+    open-in-view: false
+  sql:
+    init:
+      mode: always
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+school:
+  jwt:
+    secret: ${SCHOOL_JWT_SECRET:local-development-secret-change-before-use-1234567890}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
