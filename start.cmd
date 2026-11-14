@@ -1,5 +1,6 @@
 @echo off
 setlocal
+rem PID records let stop.cmd distinguish this project's processes from unrelated Java and Node processes.
 set "SM_ROOT=%~dp0"
 set "SM_RUN_DIR=%SM_ROOT%.run"
 pushd "%SM_ROOT%" || exit /b 1
